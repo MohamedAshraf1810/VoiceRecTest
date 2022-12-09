@@ -48,16 +48,16 @@ for path in file_paths:
         voiceEncoding.append(vector)
     # when features of 5 files of speaker are concatenated, then do model training
 	# -> if count == 5: --> edited below
-    if count == 5:    
+    if count == 5:
         fLabels = path.split("-")[0]
         labels.append(fLabels)
         
         count = 0
 
-        gmmclf = GaussianMixture(n_components=counter, covariance_type='diag')
+        gmmclf = GaussianMixture(n_components=5, covariance_type='diag')
         gmmclf.fit(vector, fLabels) #X_train are mfcc vectors, y_train are labels
         plt.scatter(vector[:, 0], vector[:, 1])
-        plt.show()
+        # plt.show()
         # print(vector)
 
     count = count + 1   
